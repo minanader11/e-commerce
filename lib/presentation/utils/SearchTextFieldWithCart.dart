@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/texts.dart';
 import 'package:e_commerce/core/theme/colors.dart';
 import 'package:e_commerce/core/theme/text_styles.dart';
+import 'package:e_commerce/presentation/cart/view/cart_screen.dart';
 import 'package:e_commerce/presentation/category/view_model/category_states.dart';
 import 'package:e_commerce/presentation/category/view_model/category_view_model.dart';
 import 'package:e_commerce/presentation/utils/custom_text_field.dart';
@@ -56,13 +57,30 @@ class SearchTextFieldWithCart extends StatelessWidget {
           width: 24.w,
         ),
         BlocBuilder<CategoryViewModel,CategoryStates>(
-          builder: (context, state) => Badge(label: Text(viewModel.badgeNumber),
-            child: Icon(
-              Icons.shopping_cart_outlined,
-              color: MyColors.primaryColor,
-              size: 24,
+          builder: (context, state) {
+            if(state is GetCartSuccessState){
+            return Badge(label: Text(viewModel.badgeNumber),
+            child: InkWell(onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => CartScreen(),)),
+              child: Icon(
+                Icons.shopping_cart_outlined,
+                color: MyColors.primaryColor,
+                size: 24,
+              ),
             ),
-          ),
+          );}
+          else if(state is GetCartLoadingState){
+            return CircularProgressIndicator();
+          } else {
+            return Badge(label: Text(viewModel.badgeNumber),
+              child: InkWell(onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => CartScreen(),)),
+                child: Icon(
+                  Icons.shopping_cart_outlined,
+                  color: MyColors.primaryColor,
+                  size: 24,
+                ),
+              ),
+            );
+            }}
         ),
         SizedBox(
           width: 17.w,

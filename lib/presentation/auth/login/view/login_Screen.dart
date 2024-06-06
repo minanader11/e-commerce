@@ -114,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: Styles.textStyle18,
                     ),
                     SizedBox(height: 24.h),
-                    CustomTextField(
+                    CustomTextField( obscureText: true,
                         hint: MyTexts.enterYourPassword,
                         controller: viewModel.passwordController,
                         validator: (text) {
@@ -166,13 +166,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: 32.h,
                     ),
-                    InkWell(onTap: () => Navigator.of(context).pushNamed(RegisterScreen.routeName),
+                    InkWell(onTap: () => Navigator.of(context).pushReplacementNamed(RegisterScreen.routeName),
                       child: Text(
                         MyTexts.dontHaveAccount,
                         textAlign: TextAlign.center,
                         style: Styles.textStyle18,
                       ),
-                    )
+                    ),
+                    SizedBox(height: 20.h,),
                   ]),
             ),
           ),

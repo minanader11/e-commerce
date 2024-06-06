@@ -8,11 +8,17 @@ import 'package:e_commerce/domain/data_source/Home_data_source.dart';
 import 'package:e_commerce/domain/repository/Authentication_repository.dart';
 import 'package:e_commerce/domain/repository/Home_repository.dart';
 import 'package:e_commerce/domain/use_cases/addToCartUseCase.dart';
+import 'package:e_commerce/domain/use_cases/addToWishlistUseCase.dart';
+import 'package:e_commerce/domain/use_cases/getCartUseCase.dart';
 import 'package:e_commerce/domain/use_cases/getCategoriesUseCase.dart';
 import 'package:e_commerce/domain/use_cases/getProductsUseCase.dart';
 import 'package:e_commerce/domain/use_cases/getSubCategoriesUseCase.dart';
+import 'package:e_commerce/domain/use_cases/getUserWishlistUseCase.dart';
 import 'package:e_commerce/domain/use_cases/loginUseCase.dart';
 import 'package:e_commerce/domain/use_cases/registerUseCase.dart';
+import 'package:e_commerce/domain/use_cases/removeProductFromCartUseCase.dart';
+import 'package:e_commerce/domain/use_cases/removeProductFromWishlistUseCase.dart';
+import 'package:e_commerce/domain/use_cases/updateProductFromCartUseCase.dart';
 
 RegisterUseCase injectRegisterUseCase(){
   return RegisterUseCase(authenticationRepository: injectAuthenticationRepository());
@@ -46,4 +52,22 @@ GetProductsUseCase injectGetProductUseCase(){
 }
 AddToCartUseCase injectAddToCartUseCase(){
   return AddToCartUseCase(homeRepository: injectHomeRepository());
+}
+AddToWishlistUseCase injectAddToWishlistUseCase(){
+  return AddToWishlistUseCase(homeRepository: injectHomeRepository());
+}
+GetUserWishlistUseCase injectGetUserWishlistUseCase(){
+  return GetUserWishlistUseCase(homeRepository: injectHomeRepository());
+}
+GetCartUseCase injectGetCartUseCase(){
+  return GetCartUseCase(homeRepository: injectHomeRepository());
+}
+RemoveProductFromWishlistUseCase injectRemoveProductFromWishlistUseCase(){
+  return RemoveProductFromWishlistUseCase(homeRepository: injectHomeRepository());
+}
+RemoveProductFromCartUseCase injectRemoveProductFromCartUseCase(){
+  return RemoveProductFromCartUseCase(homeRepository: injectHomeRepository());
+}
+UpdateProductFromCartUseCase injectUpdateProductFromCartUseCase(){
+  return UpdateProductFromCartUseCase(homeRepository: injectHomeRepository());
 }

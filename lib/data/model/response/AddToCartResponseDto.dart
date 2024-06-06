@@ -5,23 +5,21 @@ class AddToCartResponseDto extends AddToCartResponseEntity{
       super.status,
       super.message,
       super.numOfCartItems,
-      super.data,
-  this.statusMsg});
+      super.data,});
 
   AddToCartResponseDto.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
     numOfCartItems = json['numOfCartItems'];
     data = json['data'] != null ? AddToCartResponseDataDto.fromJson(json['data']) : null;
-    statusMsg=json['statusMsg'];
   }
 
-String? statusMsg;
+
 
 
 }
 
-class AddToCartResponseDataDto extends AddToCartResponseDataEntity{
+class AddToCartResponseDataDto  extends AddToCartResponseDataEntity{
   AddToCartResponseDataDto({
       super.id,
       super.cartOwner,
@@ -37,7 +35,7 @@ class AddToCartResponseDataDto extends AddToCartResponseDataEntity{
     if (json['products'] != null) {
       products = [];
       json['products'].forEach((v) {
-        products?.add(AddToCartResponseProductsDto.fromJson(v));
+        products?.add(AddToCartResponseProductsEntity.fromJson(v));
       });
     }
     createdAt = json['createdAt'];
@@ -47,9 +45,11 @@ class AddToCartResponseDataDto extends AddToCartResponseDataEntity{
   }
 
 
+
+
 }
 
-class AddToCartResponseProductsDto extends AddToCartResponseProductsEntity {
+class AddToCartResponseProductsDto extends AddToCartResponseProductsEntity{
   AddToCartResponseProductsDto({
       super.count,
       super.id,
@@ -62,6 +62,8 @@ class AddToCartResponseProductsDto extends AddToCartResponseProductsEntity {
     product = json['product'];
     price = json['price'];
   }
+
+
 
 
 }

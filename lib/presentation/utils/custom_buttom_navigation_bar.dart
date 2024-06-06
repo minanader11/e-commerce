@@ -32,7 +32,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               items: [
                 BottomNavigationBarItem(
                   activeIcon: Container(decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20.r)),
-                    child: ImageIcon(color: MyColors.primaryColor,
+                    child: ImageIcon(color: MyColors.primaryColor,size: 30.w,
                       AssetImage(
                         MyTexts.homeActiveIcon,
                       ),
@@ -47,7 +47,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   activeIcon:  Container(decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20.r)),
-                    child: ImageIcon(color: MyColors.primaryColor,
+                    child: ImageIcon(color: MyColors.primaryColor,size: 30.w,
                       AssetImage(
                         MyTexts.categoryActiveIcon,
                       ),
@@ -62,7 +62,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   activeIcon: Container(decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20.r)),
-                    child: ImageIcon(color: MyColors.primaryColor,
+                    child: ImageIcon(color: MyColors.primaryColor,size: 30.w,
                       AssetImage(
                         MyTexts.favoriteActiveIcon,
                       ),
@@ -77,7 +77,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   activeIcon:  Container(decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20.r)),
-                    child: ImageIcon(color: MyColors.primaryColor,
+                    child: ImageIcon(color: MyColors.primaryColor,size: 30.w,
                       AssetImage(
                         MyTexts.profileActiveIcon,
                       ),

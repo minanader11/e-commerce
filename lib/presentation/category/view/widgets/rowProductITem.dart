@@ -21,7 +21,7 @@ class RowProductItem extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            'review(4.6)',
+            'review(${productEntity.ratingsAverage})',
             style: Styles.textStyle12.copyWith(color: MyColors.primaryColor),
           ),
           SizedBox(
@@ -35,8 +35,8 @@ class RowProductItem extends StatelessWidget {
           Spacer(),
           InkWell(onTap: () {
             print(loginCubit.token);
-            categoriesCubit.addToCart(
-                productEntity.id.toString(), loginCubit.token);
+            categoriesCubit.addToCart(productEntity.id!
+               , loginCubit.token);
           },
             child: Container(
              // margin: EdgeInsets.only(right: 8.w, bottom: 8.h),
@@ -45,16 +45,14 @@ class RowProductItem extends StatelessWidget {
                   color: MyColors.primaryColor,
                   borderRadius: BorderRadius.circular(20.r)),
               child: BlocBuilder<CategoryViewModel,CategoryStates>(builder:(context, state) {
-                if(state is AddToCartLoadingState){
-                  return CircularProgressIndicator();
-                }else{
+
                   return Icon(
                     Icons.add,
                     color: MyColors.whiteColor,
                     size: 16.w,
                   );
                 }
-              },
+              ,
               ),
             ),
           )

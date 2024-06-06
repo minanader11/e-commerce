@@ -12,6 +12,7 @@ class AddToCartResponseEntity {
   AddToCartResponseDataEntity? data;
 
 
+
 }
 
 class AddToCartResponseDataEntity {
@@ -44,12 +45,24 @@ class AddToCartResponseProductsEntity {
       this.product, 
       this.price,});
 
-
+  AddToCartResponseProductsEntity.fromJson(dynamic json) {
+    count = json['count'];
+    id = json['_id'];
+    product = json['product'];
+    price = json['price'];
+  }
   num? count;
   String? id;
   String? product;
   num? price;
 
-
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['count'] = count;
+    map['_id'] = id;
+    map['product'] = product;
+    map['price'] = price;
+    return map;
+  }
 
 }

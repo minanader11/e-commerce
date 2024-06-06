@@ -12,3 +12,15 @@ class AddToCartFailureState extends CategoryStates{
   String errMsg;
   AddToCartFailureState({required this.errMsg});
 }
+class AddToWishlistLoadingState extends CategoryStates{}
+class AddToWishlistSuccessState extends CategoryStates{}
+class AddToWishlistFailureState extends CategoryStates{
+  String errMsg;
+  AddToWishlistFailureState({required this.errMsg});
+}
+class GetCartLoadingState extends  CategoryStates{}
+class GetCartSuccessState extends  CategoryStates{}
+class GetCartFailureState extends  CategoryStates{
+  String errMsg;
+  GetCartFailureState({required this.errMsg});
+}

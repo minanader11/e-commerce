@@ -15,6 +15,7 @@ class MyTexts {
   static const String profileIcon='assets/images/profileItem.png';
   static const String categoryPhoto='assets/images/categoryPhoto.png';
   static const String profileActiveIcon='assets/images/profileACTIVEICON.png';
+  static const String favoriteee='assets/images/favoriteeee.png';
   static const String welcomeText = 'Welcome Back To Route';
   static const String pleaseSignText = 'Please sign in with your mail';
   static const String userName = 'User Name';
@@ -24,6 +25,8 @@ class MyTexts {
   static const String forgetPassword = 'Forget Password';
   static const String login = 'Login';
   static const String dontHaveAccount = "Don’t have an account? Create Account";
+  static const String alreadyHaveAccount='Already Have an account? Login';
+
   static const String fullName = 'Full Name';
   static const String mobileNumber = 'Mobile Number';
   static const String email = 'E-mail address';
@@ -45,4 +48,6 @@ class MyTexts {
   static const String yourGrade=" Your Grade";
   static const String yourPhone=" Your PhoneNumber";
   static const String yourUserName=" Your Username";
+  static const String favoriteIconActivated='assets/images/favoriteIconActivated.png';
+  static const String cart='Cart';
 }

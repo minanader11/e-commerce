@@ -5,6 +5,7 @@ import 'package:e_commerce/domain/di.dart';
 import 'package:e_commerce/presentation/auth/login/view/login_Screen.dart';
 import 'package:e_commerce/presentation/auth/register/view_model/register_states.dart';
 import 'package:e_commerce/presentation/auth/register/view_model/register_view_model.dart';
+import 'package:e_commerce/presentation/home/view/home_screen.dart';
 import 'package:e_commerce/presentation/utils/custom_text_field.dart';
 import 'package:e_commerce/presentation/utils/dialog_utils.dart';
 import 'package:flutter/material.dart';
@@ -139,7 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   SizedBox(
                     height: 24.h,
                   ),
-                  CustomTextField(
+                  CustomTextField(obscureText: true,
                       hint: MyTexts.password,
                       controller: viewModel.passwordController,
                       validator: (text) {
@@ -177,6 +178,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                   ),
+                  SizedBox(height: 20.h,),
+                  InkWell(onTap: () => Navigator.of(context).pushReplacementNamed(LoginScreen.routeName),
+                    child: Text(
+                      MyTexts.alreadyHaveAccount,
+                      textAlign: TextAlign.center,
+                      style: Styles.textStyle18,
+                    ),
+                  ),
+                  SizedBox(height: 20.h,),
                 ],
               ),
             ),

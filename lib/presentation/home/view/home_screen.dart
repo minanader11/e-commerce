@@ -3,6 +3,8 @@ import 'package:e_commerce/core/theme/colors.dart';
 import 'package:e_commerce/core/theme/text_styles.dart';
 import 'package:e_commerce/domain/di.dart';
 import 'package:e_commerce/domain/entities/CategoriesOrBrandsResponseEntity.dart';
+import 'package:e_commerce/presentation/auth/login/view_model/login_view_model.dart';
+import 'package:e_commerce/presentation/category/view_model/category_view_model.dart';
 import 'package:e_commerce/presentation/home/view/widgets/category_and_brand_grid_view.dart';
 import 'package:e_commerce/presentation/home/view_model/home_states.dart';
 import 'package:e_commerce/presentation/home/view_model/home_view_model.dart';
@@ -27,6 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var loginCubit=BlocProvider.of<LoginViewModel>(context);
+    CategoryViewModel categoryCubit =BlocProvider.of<CategoryViewModel>(context);
+    if(categoryCubit.badgeNumber=='0'){
+      categoryCubit.getCart(loginCubit.token);
+    }
     return BlocBuilder<HomeViewModel, HomeStates>(
       bloc: viewModel..getCategories()..getSubCategories(),
       builder: (context, state) => Padding(
@@ -74,7 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
               Center(
                 child: Text(state.errMsg,),
               )
-              :CategoryAndBrandGridView(
+              :
+              CategoryAndBrandGridView(
                 cateogryOrBrandDataEntityList: viewModel.subCategoriesList,
               ),
             ],

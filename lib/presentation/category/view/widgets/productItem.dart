@@ -2,9 +2,12 @@ import 'package:e_commerce/core/texts.dart';
 import 'package:e_commerce/core/theme/colors.dart';
 import 'package:e_commerce/core/theme/text_styles.dart';
 import 'package:e_commerce/domain/entities/productResponseEntity.dart';
+import 'package:e_commerce/presentation/auth/login/view_model/login_view_model.dart';
 import 'package:e_commerce/presentation/category/view/widgets/product_details_screen.dart';
 import 'package:e_commerce/presentation/category/view/widgets/rowProductITem.dart';
+import 'package:e_commerce/presentation/category/view_model/category_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductItem extends StatelessWidget {
@@ -14,8 +17,9 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var loginCubit=BlocProvider.of<LoginViewModel>(context);
+    var categoriesCubit=BlocProvider.of<CategoryViewModel>(context);
     return Container(
-      margin: EdgeInsets.only(right: 16.w),
       decoration: BoxDecoration(
           border:
               Border.all(width: 1, color: Color(0xff004182).withOpacity(0.6)),
@@ -61,21 +65,27 @@ class ProductItem extends StatelessWidget {
         Positioned(
           right: 8.w,
           top: 8.h,
-          left: 153.w,
-          child: Container(
-            decoration: BoxDecoration( boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
-              ),
-            ],
-                color: Colors.white, borderRadius: BorderRadius.circular(20.r)),
-            child: ImageIcon(
-              color: MyColors.primaryColor,
-              AssetImage(
-                MyTexts.favoriteActiveIcon,
+          left: 160.w,
+          child: InkWell(onTap: () {
+            categoriesCubit.addToWishlist(productEntity.id!, loginCubit.token);
+
+          },
+            child: Container(
+
+              decoration: BoxDecoration( boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+                  color: Colors.white, borderRadius: BorderRadius.circular(20.r)),
+              child: ImageIcon(
+                color: MyColors.primaryColor,
+                AssetImage(
+                  MyTexts.favoriteActiveIcon,
+                ),
               ),
             ),
           ),

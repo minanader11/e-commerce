@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddAndRemoveProductContainer extends StatelessWidget {
-  int number=1;
+  int number;
+  void Function()? onTapMinus;
+  void Function()? onTapPlus;
+  AddAndRemoveProductContainer({this.number=1,this.onTapMinus,this.onTapPlus});
   @override
   Widget build(BuildContext context) {
     return Container(padding: EdgeInsets.symmetric(vertical: 11.h,horizontal: 16.w),
@@ -14,11 +17,11 @@ class AddAndRemoveProductContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(20.r),
           color: MyColors.primaryColor),
       child: Row(children: [
-        ImageIcon(AssetImage(MyTexts.iconMinus),color: MyColors.whiteColor),
+        InkWell(onTap: onTapMinus,child: ImageIcon(AssetImage(MyTexts.iconMinus),color: MyColors.whiteColor)),
         SizedBox(width: 22.w,),
         Text(number.toString(),style: Styles.textStyle18,),
         SizedBox(width: 22.w,),
-        ImageIcon(AssetImage(MyTexts.iconPlus),color: MyColors.whiteColor),
+        InkWell(onTap: onTapPlus,child: ImageIcon(AssetImage(MyTexts.iconPlus),color: MyColors.whiteColor)),
 
       ]),
     );
